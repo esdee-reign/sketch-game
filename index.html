@@ -8,8 +8,29 @@
 </head>
 <body>
 
-    <button onclick="gridMaker()">Try it</button>
-        <div class="container" id="container"></div>
+    <div class="heading" id="heading">
+        <h3 style=" -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: black;">Etch-A-Sketch</h3>
+    </div>
+
+    <div class = 'buttons'>
+        <button id="reset">Reset</button>
+        <button id="black">Black</button>
+        <button id="rgb">RGB</button>
+        <div class="colorAndPrompt">
+            <input type="color" id="color">
+            <p>choose a color</p>
+        </div>
+        <div class="sliderAndValue">
+            <input type="range" min="2" max="100" value="16" id="slider">
+            <p class="value">16</p>
+        </div>
+    </div>
+
+    
+
+    <div class="grid" id="container">
+    </div>
 
     <script src="script.js"></script>
 </body>
