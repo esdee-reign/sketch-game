@@ -9,13 +9,23 @@ function createGrid() {
         });
         grid.appendChild(div);
     }
-};
+}
 
 function removeAllChildNodes(parent){
     while(parent.firstChild){
         parent.removeChild(parent.firstChild);
     }
 }
+
+function getRandomColor() {
+    let letters = '0123456789ABCDEF';
+    let color = '#';
+    for(var i = 0; i < 6; i++) {
+        color = color + letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
 
 const slider = document.querySelector('#slider');
 const screenVal = document.querySelector('.value');
@@ -32,6 +42,50 @@ slider.addEventListener('input', function(){
         })
         grid.appendChild(div);
     }
-})
+});
+
+const reset =  document.querySelector('#reset');
+reset.addEventListener('click', function() {
+    let val = document.getElementById('slider').value;
+    let cell = grid.children;
+    for(let i = 0; i < val*val; i++){
+        cell[i].style.backgroundColor = '#f0f0f0';
+    }
+});
+
+const black = document.querySelector('#black');
+black.addEventListener('click', function(){
+    let val = document.getElementById('slider').value;
+    const cell = grid.children;
+    for(let i = 0; i < val*val; i++) {
+        cell[i].addEventListener('mouseover', function(e) {
+            e.target.style.backgroundColor = 'black';
+        })
+    }
+});
+
+
+const rgb = document.querySelector('#rgb');
+rgb.addEventListener('click', function() {
+    let val = document.getElementById('slider').value;
+    let cell = grid.children;
+    for(let i = 0; i < val*val; i++) {
+        cell[i].addEventListener('mouseover',function(e) {
+            e.target.style.backgroundColor = getRandomColor();
+        })
+    }
+});
+
+const chooseColor = document.querySelector('#color');
+chooseColor.addEventListener('input', function() {
+    let val = document.getElementById('slider').value;
+    let newColor = document.getElementById('color').value;
+    let cell = grid.children;
+    for(let i = 0 ; i < val*val; i++) {
+        cell[i].addEventListener('mouseover',function(e) {
+            e.target.style.backgroundColor = newColor;
+        })
+    }
+});
 
 createGrid();
